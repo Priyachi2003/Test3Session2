@@ -45,8 +45,6 @@ int main()
   f2=input_fraction();
   sum=add_fractions(f1,f2);
   output(f1,f2,sum);
-  
-  //printf("%d\n",find_gcd(16,24));
 }
 /*void output(Fraction f1, Fraction f2, Fraction sum)
 {
