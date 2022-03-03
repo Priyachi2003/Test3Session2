@@ -1,1 +1,141 @@
+gcc -g p7final.c
+ ./a.out
+input a fraction
+1
+2
+input a fraction
+3
+4
+the sum of three fractions 1/2 and 3/4 is 5/4 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8a7: file p7final.c, line 44.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+ pwd
+/home/runner/Test3Session2
+ gcc -g p7final.c
+ ./a.out
+input a fraction
+1
+2
+input a fraction
+3
+4
+the sum of three fractions 1/2 and 3/4 is 5/4 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8a7: file p7final.c, line 44.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p7final.c:44
+44    f1=input_fraction();
+(gdb) s
+input_fraction () at p7final.c:19
+19  {
+(gdb) n
+21    printf("input a fraction\n");
+(gdb) n
+input a fraction
+22    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+1
+2
+23    return f;
+(gdb) n
+24  }
+(gdb) n
+main () at p7final.c:45
+45    f2=input_fraction();
+(gdb) s
+input_fraction () at p7final.c:19
+19  {
+(gdb) n
+21    printf("input a fraction\n");
+(gdb) n
+input a fraction
+22    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+4
+5
+23    return f;
+(gdb) n
+24  }
+(gdb) n
+main () at p7final.c:46
+46    sum=add_fractions(f1,f2);
+(gdb) s
+add_fractions (f1=..., f2=...) at p7final.c:28
+28     sum.num=f1.num*f2.den+f2.num*f1.den;
+(gdb) n
+29    sum.den=f1.den*f2.den;
+(gdb) n
+30    int g=find_gcd(sum.num,sum.den);
+(gdb) n
+31    sum.num=sum.num/g;
+(gdb) n
+32    sum.den=sum.den/g;
+(gdb) n
+33    return sum;
+(gdb) p f1
+$1 = {num = 1, den = 2}
+(gdb) p f2
+$2 = {num = 4, den = 5}
+(gdb) p sum
+$3 = {num = 13, den = 10}
+(gdb) n
+34  }
+(gdb) n
+main () at p7final.c:47
+47    output(f1,f2,sum);
+(gdb) s
+output (f1=..., f2=..., sum=...) at p7final.c:37
+37    printf("the sum of three fractions %d/%d and %d/%d is %d/%d \n",f1.num,f1.den,f2.num,f2.den,sum.num,sum.den);
+(gdb) n
+the sum of three fractions 1/2 and 4/5 is 13/10 
+38  }
+(gdb) n
+main () at p7final.c:50
+50  }
+(gdb) n
+__libc_start_main (main=0x55b2c3c0089f <main>, argc=1, 
+    argv=0x7ffff23f4568, init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, stack_end=0x7ffff23f4558)
+    at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) c
+Continuing.
+[Inferior 1 (process 32) exited normally]
+(gdb) 
