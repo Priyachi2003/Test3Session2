@@ -1,21 +1,24 @@
-#include <stdio.h>
-struct _fraction
+#include<stdio.h>
+void input(int *num1, int *den1, int *num2, int *den2)
 {
-int num,den;
-};
-typedef struct _fraction Fraction;
-int find_gcd(int a, int b)
+  printf("enter the numbers\n",num1,den1,num2,den2);
+  scanf("%d %d %d %d",num1,den1,num2,den2);
+  
+}
+void add(int num1,int den1, int num2, int den2, int *num3, int *den3)
 {
-  int t;
-  while(b!=0)
-    {
-      t=b;
-      b=a%b;
-      a=t;
-    }
-  return a;
+  *num3=(num1*den2)+(den1*num2);
+  *den3=den1*den2;
+}
+void output(int num1, int den1, int num2, int den2, int num3, int den3)
+{
+  printf("the sum of two fractions %d/%d,%d/%d=%d/%d",num1,den1,num2,den2,num3,den3);
 }
 int main()
 {
-  printf("%d\n",find_gcd(16,24));
+  int num1,den1,num2,den2,num3,den3;
+  input(&num1,&den1,&num2,&den2);
+  add(num1,den1,num2,den2,&num3,&den3);
+  output(num1,den1,num2,den2,num3,den3);
+  return 0;
 }
