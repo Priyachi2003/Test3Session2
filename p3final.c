@@ -3,7 +3,7 @@ struct _fraction
 {
 int num,den;
 };
-typedef _fraction Fraction
+typedef struct_fraction Fraction;
 Fraction input_fraction()
 {
   Fraction f;
@@ -11,7 +11,7 @@ Fraction input_fraction()
   scanf("%d %d",&f.num,&f.den);
   return f;
 }
-fraction largest_fraction(fraction f1,fraction f2,fraction f3)
+Fraction largest_fraction(Fraction f1,Fraction f2,Fraction f3)
 {
   if((f1.num/f1.den)>(f2.num/f2.den) && (f1.num/f1.den)>(f3.num/f3.den))
  return f1.num/f1.den;
