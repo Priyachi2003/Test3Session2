@@ -1,44 +1,54 @@
+
+
 #include<stdio.h>
-int input_size()
+struct _fraction
 {
-  int k;
-  printf("enter the size of array:");
-  scanf("%d", &k);
-  return k;
+  int num,den;
+};
+typedef struct _fraction Fraction;
+Fraction input_fraction()
+{
+   Fraction f;
+   printf("Enter the fraction:");
+  scanf("%d%d", &f.num,&f.den);
+  return f;
 }
-void input_array(int n, int a[n])
+
+Fraction Smallest_fraction(Fraction f1,Fraction f2, Fraction f3)
 {
-  int i;
-  printf("enter the values of array:\n");
-  for(i=0; i<n; i++)
-    scanf("%d", &a[i]);
-}
-int find_largest(int n, int a[n])
-{
-  int index=0;
-  for(int i=0;i<n;i++)
+  
+  Fraction smallest;
+  if(f1.num*f2.den< f2.num*f1.den) 
   {
-      if(a[index]<a[i])
-        index=i;
+    if (f1.num*f3.den<f3.num*f1.den)
+    smallest.num=f1.num;
+    smallest.den=f1.den;
   }
-  return index;
-}
-void output(int n, int a[n], int largest )
-{ 
-  printf("largest is %d ",a[largest]);
+  else if (f2.num*f3.den<f3.num*f2.den)
   {
-  printf("its index is %d",largest);
+    smallest.num=f2.num;
+    smallest.den=f2.den;
   }
+  else 
+  {
+    smallest.num=f3.num;
+    smallest.den=f3.den;
+  }
+  return smallest;
+}
+
+void output(Fraction f1, Fraction f2, Fraction f3, Fraction smallest)
+{
+
+  printf("the smallest fraction is %d/%d", smallest.num,smallest.den);
 }
 int main()
 {
-  int n,x;
-  n=input_size();
-  int a[n];
-  input_array(n,a);
- 
-  x=find_largest(n,a);
-  output(n,a,x);
-  
+  Fraction f1,f2,f3,smallest;
+  f1=input_fraction();
+  f2=input_fraction();
+  f3=input_fraction();
+  smallest=Smallest_fraction(f1,f2,f3);
+  output(f1,f2,f3,smallest);
   return 0;
 }
